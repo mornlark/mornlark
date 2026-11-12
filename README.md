@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# robo
 
-## Getting Started
+A robot shopping storefront built with Next.js 16, React 19, and TypeScript. The design uses warm neutrals, sage accents, and custom robot product photography.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. For a production check:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the existing Cloudflare deployment workflow. No Sites hosting or deployment configuration is added.
 
-## Learn More
+## Storefront
 
-To learn more about Next.js, take a look at the following resources:
+- Four sample robots with product details and specifications.
+- Category filtering, text search, maximum-price filtering, and price sorting.
+- Saved favorites and a shopping bag persisted in browser local storage.
+- Quantity controls, item removal, calculated totals, and a robot match finder.
+- Responsive layouts, keyboard-accessible dialogs, focus indicators, and reduced-motion support.
+- A clearly labeled demo checkout that validates the form and completes a local preview order.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The catalog is illustrative. Checkout does not process payments or create fulfillment orders. Form details are neither sent to a server nor stored. Cart and favorites use this browser only.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Editing
 
-## Deploy on Vercel
+- `app/catalog.ts`: sample products, prices, descriptions, and features.
+- `app/storefront.tsx`: browsing and shopping interactions.
+- `app/globals.css`: responsive layout and styling.
+- `app/layout.tsx`: page metadata and fonts.
+- `public/images/robot-hero.webp`: featured robot photograph.
+- `public/images/robot-collection.webp`: four product photographs arranged in equal quadrants and displayed as a CSS image sprite.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The images are compressed WebP files, served locally without an external image service. Image generation prompts and provenance are in [docs/image-prompts.md](docs/image-prompts.md).

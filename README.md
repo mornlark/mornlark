@@ -65,3 +65,42 @@ curl https://isitagentready.com/api/scan \
 ```
 
 Confirm `checks.discoverability.sitemap.status` is `"pass"`.
+
+## Agent access
+
+Request the homepage with `Accept: text/markdown` for clean catalog text. Browser requests receive HTML. The homepage links to the API catalog, OpenAPI document, agent documentation, and `auth.md`. Robots content preferences allow search and agent input and decline AI training.
+
+The public catalog and quote API share the storefront's product data. MCP Streamable HTTP at `/mcp` exposes three tools, a catalog resource, and a comparison prompt. A2A at `/a2a` supports structured catalog and quote messages. Native WebMCP browsers receive five tools on page load, with abort cleanup when the storefront unmounts.
+
+Discovery documents are served under `/.well-known/` for API catalog, A2A, skills with SHA-256 digests, MCP, Web Bot Auth, ACP, and UCP. The current MCP Server Card is also at `/mcp/server-card`. Read `/docs/agents.md` and `/openapi.json` for exact schemas, headers, and protocol versions. Public access is anonymous; no OAuth issuer or customer account is fabricated.
+
+Commerce is a sandbox. ACP advertises catalog and checkout previews, and UCP advertises a custom catalog capability. The A2A card declares an AP2 merchant extension with payment execution disabled. These are discovery and preview integrations, not a complete production ACP/AP2 payment implementation. Checkout completion always returns HTTP 409. MPP and x402 protect separate test resources when explicitly enabled; neither places an order or supports mainnet payments.
+
+### Signing and test configuration
+
+Use Node.js 22 or newer. On a fresh checkout, generate a local identity:
+
+```sh
+npm run agents:keys
+```
+
+This writes an ignored, mode-0600 `.env.local` containing an Ed25519 private key, public JWKS, sandbox session and MPP secrets, and an unfunded test wallet. It refuses to overwrite existing configuration and leaves test payments disabled. It does not change the tracked public key directory. Do not commit `.env.local` or private wallet keys.
+
+For hosting, configure `AGENT_SIGNING_PRIVATE_KEY`, its matching `AGENT_SIGNING_PUBLIC_JWKS`, and `AGENT_SESSION_SECRET` as encrypted environment settings. The private key uses base64 PKCS#8 DER; public key IDs use RFC 7638 SHA-256 thumbprints. Without a public override, the directory serves `config/agent-public-keys.json`; an unrelated private key is rejected. Rotate by retaining old public keys during the 60-second request-signature lifetime and 15-minute preview lifetime, then remove them. Keep the session secret stable for active previews.
+
+Signed outbound GET requests can be sent with `npm run agents:fetch -- https://example.com/resource`. Server code can use `agentFetch` from `lib/agents/signing.ts`, including requests with bodies. Requests bind method, destination, agent identity, expiry, nonce, and body digest. Redirects are rejected.
+
+`.env.example` lists all deployment settings. `AGENT_ENABLE_TEST_PAYMENTS=1` requires an explicit test recipient and enables only Tempo Moderato MPP and Base Sepolia x402. MPP also needs `MPP_SECRET_KEY`; x402 uses the configured HTTPS facilitator. Keep both routes disabled on multi-instance hosting until MPP has a shared replay store. Test wallet secrets stay local; the application only needs public recipient addresses. Real commerce still needs a merchant processor, mandate validation, durable orders, and fulfillment.
+
+### Agent checks
+
+```sh
+npm run test:agents
+npm run lint
+npx tsc --noEmit
+npm run build -- --webpack
+```
+
+With a local server running on port 3100 (`npm run dev -- --webpack --port 3100`), run `npm run test:agents:http`. Set `AGENT_EXPECT_SIGNING=1` to require the configured checkout-preview success path. `AGENT_TEST_URL` selects a different test server. The suite checks real HTTP responses, exact skill hashes, referenced resources, REST validation, MCP client round trips, A2A messages, and disabled payment routes. It does not perform payment transactions.
+
+After merging and deploying through the existing Cloudflare workflow, run the readiness scan above. Local tests cannot establish the live domain's scan results. Browser WebMCP detection depends on native browser support; unsupported browsers retain the standard storefront. If Cloudflare manages robots or rewrites response headers, preserve these origin declarations and the distinction between HTML and Markdown.

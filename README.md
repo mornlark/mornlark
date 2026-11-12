@@ -35,7 +35,23 @@ The catalog is illustrative. Checkout does not process payments or create fulfil
 - `app/storefront.tsx`: browsing and shopping interactions.
 - `app/globals.css`: responsive layout and styling.
 - `app/layout.tsx`: page metadata and fonts.
+- `app/sitemap.ts`: canonical public page URLs, generated as `/sitemap.xml` at build time.
+- `app/robots.txt`: crawler rules and the sitemap reference.
 - `public/images/robot-hero.webp`: featured robot photograph.
 - `public/images/robot-collection.webp`: four product photographs arranged in equal quadrants and displayed as a CSS image sprite.
 
 The images are compressed WebP files, served locally without an external image service. Image generation prompts and provenance are in [docs/image-prompts.md](docs/image-prompts.md).
+
+## Sitemap maintenance
+
+The storefront currently has one public page, `https://mornlark.com/`. When publishing or removing a public page, update `app/sitemap.ts` in the same change and rebuild and deploy the site. Use each page's canonical HTTPS URL. Catalog edits keep the same home page URL, so they do not require new sitemap entries.
+
+After deployment, verify `/sitemap.xml` returns HTTP 200 with XML and `/robots.txt` includes `Sitemap: https://mornlark.com/sitemap.xml`. Run the discoverability scan:
+
+```sh
+curl https://isitagentready.com/api/scan \
+  -H 'Content-Type: application/json' \
+  --data '{"url":"https://mornlark.com"}'
+```
+
+Confirm `checks.discoverability.sitemap.status` is `"pass"`.

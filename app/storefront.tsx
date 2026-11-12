@@ -125,7 +125,14 @@ function Logo() {
           strokeLinecap="round"
         />
         <rect x="4" y="9" width="28" height="23" rx="8" fill="currentColor" />
-        <rect x="9" y="15" width="18" height="10" rx="5" fill="#fafbf8" />
+        <rect
+          x="9"
+          y="15"
+          width="18"
+          height="10"
+          rx="5"
+          fill="var(--color-paper)"
+        />
         <path
           d="M14 19v2m8-2v2"
           stroke="currentColor"
@@ -190,6 +197,7 @@ function Modal({
         <div className="modal-heading">
           <h2>{title}</h2>
           <button
+            type="button"
             className="icon-button"
             onClick={onClose}
             aria-label="Close dialog"
@@ -254,6 +262,7 @@ export default function Storefront() {
           )
             valid[id] = Math.min(count, 99);
         }
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Restore browser-only storage after hydration while keeping the server markup stable.
         setCart(valid);
       }
       const savedFavorites: unknown = JSON.parse(
@@ -364,9 +373,9 @@ export default function Storefront() {
         Skip to robots
       </a>
       <div className="announcement">
-        <span>A little more future. A lot more possibility.</span>
-        <button onClick={() => showCatalog(true)}>
-          Meet your robot <Icon name="arrow" size={13} />
+        <span>Robots for home, work and companionship.</span>
+        <button type="button" onClick={() => showCatalog(true)}>
+          Meet your robot <Icon name="arrow" size={16} />
         </button>
       </div>
       <header className="site-header container">
@@ -377,7 +386,11 @@ export default function Storefront() {
           className={menuOpen ? "main-nav is-open" : "main-nav"}
           aria-label="Main navigation"
         >
-          <button className="nav-link" onClick={() => showCatalog(true)}>
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => showCatalog(true)}
+          >
             Shop robots <Icon name="chevron" size={14} />
           </button>
           <a href="#why-robo" onClick={() => setMenuOpen(false)}>
@@ -389,6 +402,7 @@ export default function Storefront() {
         </nav>
         <div className="header-actions">
           <button
+            type="button"
             className={`icon-button ${searchOpen ? "active" : ""}`}
             aria-label="Search robots"
             aria-expanded={searchOpen}
@@ -397,6 +411,7 @@ export default function Storefront() {
             <Icon name="search" />
           </button>
           <button
+            type="button"
             className="icon-button favorites-button"
             aria-label={`Saved robots (${favorites.length})`}
             onClick={() => openPanel("favorites")}
@@ -408,6 +423,7 @@ export default function Storefront() {
           </button>
           <span className="header-divider" />
           <button
+            type="button"
             className="bag-button"
             aria-label={`Shopping bag (${cartCount})`}
             onClick={() => openPanel("cart")}
@@ -417,6 +433,7 @@ export default function Storefront() {
             <span className="bag-count">{cartCount}</span>
           </button>
           <button
+            type="button"
             className="icon-button mobile-menu"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
@@ -465,38 +482,26 @@ export default function Storefront() {
 
       <main>
         <section className="hero container" aria-labelledby="hero-title">
-          <div className="hero-image">
-            <Image
-              src="/images/robot-hero.webp"
-              alt="Atlas, a friendly white humanoid robot with soft green eyes and finely articulated hands"
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 700px) 100vw, 70vw"
-            />
-          </div>
-          <div className="hero-content">
-            <p className="eyebrow">
-              <span className="status-dot" />
-              THE FUTURE FEELS RIGHT AT HOME
-            </p>
+          <div className="intro-copy">
             <h1 id="hero-title">
-              A smarter life.
-              <br />A robot away.
+              Robots for
+              <br />
+              real life.
             </h1>
             <p className="hero-description">
-              Less of the everyday. More of what you love.
-              <br className="desktop-break" /> Find a robot that makes life a
-              little more human.
+              Find thoughtful companions for your home, workspace and everyday
+              routines.
             </p>
             <div className="hero-buttons">
               <button
+                type="button"
                 className="button button-dark"
                 onClick={() => showCatalog(true)}
               >
                 Explore robots <Icon name="arrow-up" size={18} />
               </button>
               <button
+                type="button"
                 className="button button-text"
                 onClick={() => {
                   setMatch("");
@@ -506,66 +511,31 @@ export default function Storefront() {
                 Find your match <Icon name="arrow" size={18} />
               </button>
             </div>
-            <div className="hero-footnote">
-              <span className="little-spark">
-                <Icon name="spark" size={17} />
-              </span>
-              Thoughtfully selected. Ready for your world.
-            </div>
           </div>
-          <button
-            className="hero-product-label"
-            onClick={() => openProduct(products[0])}
-          >
-            <span className="label-plus">
-              <Icon name="plus" size={18} />
-            </span>
-            <span>
-              <strong>Meet Atlas One</strong>
-              <span>A new kind of helping hand.</span>
-            </span>
-            <Icon name="arrow-up" size={18} />
-          </button>
-          <span className="hero-index">
-            01 <span>/ 04</span>
-          </span>
-        </section>
-
-        <section
-          className="benefits container"
-          id="why-robo"
-          aria-label="The MornLark promise"
-        >
-          {[
-            {
-              icon: "truck",
-              title: "Free shipping",
-              text: "On every robot, everywhere.",
-            },
-            {
-              icon: "shield",
-              title: "Built for peace of mind",
-              text: "A 2-year warranty, included.",
-            },
-            {
-              icon: "return",
-              title: "30 days to fall in love",
-              text: "Easy returns. No hard feelings.",
-            },
-            {
-              icon: "headphones",
-              title: "Real human support",
-              text: "Good people. Here to help.",
-            },
-          ].map((item) => (
-            <div className="benefit" key={item.title}>
-              <Icon name={item.icon as IconName} size={25} />
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
+          <figure className="hero-product">
+            <div className="hero-image">
+              <Image
+                src="/images/robot-hero.webp"
+                alt="Atlas One, a white humanoid robot with green eyes and articulated hands"
+                fill
+                priority
+                unoptimized
+                sizes="(max-width: 960px) 100vw, 55vw"
+              />
             </div>
-          ))}
+            <figcaption>
+              <button
+                type="button"
+                className="hero-product-label"
+                onClick={() => openProduct(products[0])}
+              >
+                <span>Meet Atlas One</span>
+                <span>
+                  {money(products[0].price)} <Icon name="arrow-up" size={18} />
+                </span>
+              </button>
+            </figcaption>
+          </figure>
         </section>
 
         <section
@@ -575,10 +545,9 @@ export default function Storefront() {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow">YOUR EVERYDAY, UPGRADED</p>
-              <h2 id="catalog-title">Good company. Great possibilities.</h2>
+              <h2 id="catalog-title">The robot collection.</h2>
             </div>
-            <button className="text-link" onClick={resetFilters}>
+            <button type="button" className="text-link" onClick={resetFilters}>
               Meet all robots <Icon name="arrow-up" size={17} />
             </button>
           </div>
@@ -586,6 +555,7 @@ export default function Storefront() {
             <div className="category-tabs" aria-label="Robot categories">
               {categories.map((c) => (
                 <button
+                  type="button"
                   key={c}
                   onClick={() => setCategory(c)}
                   aria-pressed={category === c}
@@ -601,6 +571,7 @@ export default function Storefront() {
             <div className="catalog-controls">
               <div className="filter-wrap">
                 <button
+                  type="button"
                   className={`filter-button ${priceLimit < 3000 ? "filter-active" : ""}`}
                   onClick={() => setFiltersOpen(!filtersOpen)}
                   aria-expanded={filtersOpen}
@@ -613,6 +584,7 @@ export default function Storefront() {
                     <div className="filter-heading">
                       <strong>Make it yours</strong>
                       <button
+                        type="button"
                         className="icon-button"
                         aria-label="Close filters"
                         onClick={() => setFiltersOpen(false)}
@@ -634,12 +606,14 @@ export default function Storefront() {
                     />
                     <div className="filter-bottom">
                       <button
+                        type="button"
                         className="text-link"
                         onClick={() => setPriceLimit(3000)}
                       >
                         Reset
                       </button>
                       <button
+                        type="button"
                         className="button button-dark small"
                         onClick={() => setFiltersOpen(false)}
                       >
@@ -667,7 +641,7 @@ export default function Storefront() {
                 {visibleProducts.length === 1 ? "robot" : "robots"}
                 {query && <> matching “{query}”</>}
               </span>
-              <button onClick={resetFilters}>
+              <button type="button" onClick={resetFilters}>
                 Clear filters <Icon name="close" size={13} />
               </button>
             </div>
@@ -677,6 +651,7 @@ export default function Storefront() {
               <article className="product-card" key={product.id}>
                 <div className="product-visual">
                   <button
+                    type="button"
                     className="product-image-button"
                     onClick={() => openProduct(product)}
                     aria-label={`View ${product.name}`}
@@ -686,13 +661,13 @@ export default function Storefront() {
                       Take a closer look <Icon name="arrow-up" size={15} />
                     </span>
                   </button>
-                  <span className={`product-badge badge-${product.badgeStyle}`}>
-                    {product.badge === "Bestseller" && (
-                      <Icon name="spark" size={11} />
-                    )}
-                    {product.badge}
-                  </span>
+                  {product.originalPrice && (
+                    <span className="product-badge">
+                      Save {money(product.originalPrice - product.price)}
+                    </span>
+                  )}
                   <button
+                    type="button"
                     className={`favorite-toggle ${favorites.includes(product.id) ? "is-saved" : ""}`}
                     aria-label={`${favorites.includes(product.id) ? "Unsave" : "Save"} ${product.name}`}
                     aria-pressed={favorites.includes(product.id)}
@@ -703,15 +678,12 @@ export default function Storefront() {
                 </div>
                 <div className="product-info">
                   <div className="product-name-row">
-                    <button onClick={() => openProduct(product)}>
+                    <button type="button" onClick={() => openProduct(product)}>
                       <h3>{product.name}</h3>
                     </button>
-                    <span className="rating">
-                      <span>★</span> {product.rating}
-                      <span className="review-count">({product.reviews})</span>
-                    </span>
                   </div>
                   <p>{product.tagline}</p>
+                  <p className="product-spec">{product.features[0]}</p>
                   <div className="product-bottom">
                     <div className="product-price">
                       {money(product.price)}
@@ -720,6 +692,7 @@ export default function Storefront() {
                       )}
                     </div>
                     <button
+                      type="button"
                       className="add-button"
                       onClick={() => addToCart(product)}
                       aria-label={`Add ${product.name} to bag`}
@@ -734,39 +707,33 @@ export default function Storefront() {
           {visibleProducts.length === 0 && (
             <div className="empty-state">
               <Icon name="search" size={34} />
-              <h3>No robots found. Yet.</h3>
-              <p>Try another search or give your filters a little more room.</p>
-              <button className="button button-dark" onClick={resetFilters}>
+              <h3>No robots found.</h3>
+              <p>Try a different search or adjust your filters.</p>
+              <button
+                type="button"
+                className="button button-dark"
+                onClick={resetFilters}
+              >
                 Explore all robots <Icon name="arrow" size={16} />
               </button>
             </div>
           )}
           <p className="catalog-caption">
-            <span className="status-dot" /> A little intelligence. A whole lot
-            of heart.
+            An illustrative collection. Product details and checkout are
+            provided as a preview.
           </p>
         </section>
 
         <section className="story container" id="our-story">
-          <div className="story-symbol">
-            <Logo />
-            <span className="orbit orbit-one" />
-            <span className="orbit orbit-two" />
-          </div>
+          <h2>From floor care to desk companions.</h2>
           <div className="story-copy">
-            <p className="eyebrow">TECHNOLOGY WITH A HUMAN SIDE</p>
-            <h2>
-              More living.
-              <br />
-              Less doing.
-            </h2>
             <p>
-              We believe the best technology gives you something back. Your
-              time. Your energy. A little room to be yourself. That’s why we
-              bring together robots that make a real difference to your
-              everyday.
+              We bring together robots that make a practical difference to
+              everyday life. Start with what you need, then find the robot that
+              fits.
             </p>
             <button
+              type="button"
               className="text-link"
               onClick={() => {
                 setMatch("");
@@ -777,6 +744,51 @@ export default function Storefront() {
             </button>
           </div>
         </section>
+
+        <section
+          className="benefits container"
+          id="why-robo"
+          aria-label="The MornLark promise"
+        >
+          <div className="benefits-heading">
+            <h2>Delivery and support.</h2>
+            <p className="service-note">
+              Demo store. Policies are illustrative until orders open.
+            </p>
+          </div>
+          <div className="benefits-list">
+            {[
+              {
+                icon: "truck",
+                title: "Free shipping",
+                text: "On every robot, everywhere.",
+              },
+              {
+                icon: "shield",
+                title: "2-year warranty",
+                text: "A 2-year warranty, included.",
+              },
+              {
+                icon: "return",
+                title: "30-day returns",
+                text: "Easy returns. No hard feelings.",
+              },
+              {
+                icon: "headphones",
+                title: "Real human support",
+                text: "Help from a person, when you need it.",
+              },
+            ].map((item) => (
+              <div className="benefit" key={item.title}>
+                <Icon name={item.icon as IconName} size={25} />
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className="site-footer container">
@@ -784,20 +796,22 @@ export default function Storefront() {
           <a href="#" aria-label="MornLark home">
             <Logo />
           </a>
-          <p>A little more future. A little more you.</p>
+          <p>Find a robot that fits your everyday.</p>
         </div>
         <div className="footer-links">
-          <button onClick={() => openPanel("shipping")}>
+          <button type="button" onClick={() => openPanel("shipping")}>
             Shipping & delivery
           </button>
-          <button onClick={() => openPanel("returns")}>
+          <button type="button" onClick={() => openPanel("returns")}>
             Returns & warranty
           </button>
-          <button onClick={() => openPanel("support")}>Need a hand?</button>
+          <button type="button" onClick={() => openPanel("support")}>
+            Need a hand?
+          </button>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 MornLark. Made for a more human everyday.</span>
-          <span>United States · USD $</span>
+          <span>© 2026 MornLark</span>
+          <span>Prices in USD</span>
         </div>
       </footer>
 
@@ -808,6 +822,7 @@ export default function Storefront() {
           </span>
           {toast}
           <button
+            type="button"
             onClick={() => {
               setToast("");
               openPanel("cart");
@@ -823,7 +838,7 @@ export default function Storefront() {
           <div className="product-detail">
             <ProductArt product={selected} />
             <div className="detail-copy">
-              <p className="eyebrow">{selected.category}</p>
+              <p className="detail-category">{selected.category}</p>
               <h3>{selected.tagline}</h3>
               <p className="detail-description">{selected.description}</p>
               <div className="detail-price">
@@ -843,6 +858,7 @@ export default function Storefront() {
               <div className="detail-purchase">
                 <div className="quantity-control">
                   <button
+                    type="button"
                     aria-label="Decrease quantity"
                     disabled={quantity <= 1}
                     onClick={() => setQuantity((q) => q - 1)}
@@ -851,6 +867,7 @@ export default function Storefront() {
                   </button>
                   <span>{quantity}</span>
                   <button
+                    type="button"
                     aria-label="Increase quantity"
                     disabled={quantity >= 99}
                     onClick={() => setQuantity((q) => q + 1)}
@@ -859,6 +876,7 @@ export default function Storefront() {
                   </button>
                 </div>
                 <button
+                  type="button"
                   className="button button-dark"
                   onClick={() => {
                     addToCart(selected, quantity);
@@ -870,7 +888,7 @@ export default function Storefront() {
               </div>
               <p className="detail-delivery">
                 <Icon name="truck" size={16} />
-                Free shipping · 30-day returns
+                Free shipping. 30-day returns.
               </p>
             </div>
           </div>
@@ -886,16 +904,16 @@ export default function Storefront() {
               : panel === "favorites"
                 ? "Your saved robots"
                 : panel === "match"
-                  ? "A robot that gets you."
+                  ? "Find your robot"
                   : panel === "checkout"
                     ? "Checkout preview"
                     : panel === "complete"
-                      ? "Your future looks friendly."
+                      ? "Demo order complete"
                       : panel === "shipping"
-                        ? "Good things are on their way."
+                        ? "Shipping and delivery"
                         : panel === "returns"
-                          ? "Room to make yourself at home."
-                          : "A little help from a human."
+                          ? "Returns and warranty"
+                          : "Customer support"
           }
           onClose={() => setPanel(null)}
         >
@@ -903,9 +921,10 @@ export default function Storefront() {
             (cartCount === 0 ? (
               <div className="empty-state">
                 <Icon name="bag" size={38} />
-                <h3>A little empty. Full of possibility.</h3>
-                <p>Your next everyday companion is waiting.</p>
+                <h3>Your bag is empty.</h3>
+                <p>Explore the collection to find your robot.</p>
                 <button
+                  type="button"
                   className="button button-dark"
                   onClick={() => {
                     setPanel(null);
@@ -925,6 +944,7 @@ export default function Storefront() {
                         <ProductArt product={p} />
                         <div className="cart-item-copy">
                           <button
+                            type="button"
                             className="cart-item-name"
                             onClick={() => openProduct(p)}
                           >
@@ -933,6 +953,7 @@ export default function Storefront() {
                           <span>{money(p.price)}</span>
                           <div className="quantity-control">
                             <button
+                              type="button"
                               aria-label={`Decrease ${p.name} quantity`}
                               onClick={() => updateQuantity(p.id, -1)}
                             >
@@ -940,6 +961,7 @@ export default function Storefront() {
                             </button>
                             <span>{cart[p.id]}</span>
                             <button
+                              type="button"
                               aria-label={`Increase ${p.name} quantity`}
                               disabled={cart[p.id] >= 99}
                               onClick={() => updateQuantity(p.id, 1)}
@@ -949,6 +971,7 @@ export default function Storefront() {
                           </div>
                         </div>
                         <button
+                          type="button"
                           className="icon-button"
                           aria-label={`Remove ${p.name}`}
                           onClick={() =>
@@ -975,13 +998,14 @@ export default function Storefront() {
                   </div>
                   <p>Shipping included. Taxes excluded in this preview.</p>
                   <button
+                    type="button"
                     className="button button-dark full-width"
                     onClick={() => setPanel("checkout")}
                   >
                     Continue to checkout <Icon name="arrow" size={17} />
                   </button>
                   <p className="demo-note">
-                    Demo store · No payment is collected.
+                    Demo store. No payment is collected.
                   </p>
                 </div>
               </>
@@ -993,6 +1017,7 @@ export default function Storefront() {
                 <h3>Keep your favorites close.</h3>
                 <p>Tap the heart on a robot to save it here for later.</p>
                 <button
+                  type="button"
                   className="button button-dark"
                   onClick={() => {
                     setPanel(null);
@@ -1011,6 +1036,7 @@ export default function Storefront() {
                       <ProductArt product={p} />
                       <div>
                         <button
+                          type="button"
                           className="cart-item-name"
                           onClick={() => openProduct(p)}
                         >
@@ -1018,6 +1044,7 @@ export default function Storefront() {
                         </button>
                         <p>{money(p.price)}</p>
                         <button
+                          type="button"
                           className="text-link"
                           onClick={() => addToCart(p)}
                         >
@@ -1025,6 +1052,7 @@ export default function Storefront() {
                         </button>
                       </div>
                       <button
+                        type="button"
                         className="icon-button is-saved"
                         aria-label={`Unsave ${p.name}`}
                         onClick={() => toggleFavorite(p.id)}
@@ -1066,6 +1094,7 @@ export default function Storefront() {
                   },
                 ].map((option) => (
                   <button
+                    type="button"
                     key={option.id}
                     className={
                       match === option.id
@@ -1087,6 +1116,7 @@ export default function Storefront() {
                 ))}
               </div>
               <button
+                type="button"
                 disabled={!match}
                 className="button button-dark full-width"
                 onClick={() => {
@@ -1101,6 +1131,7 @@ export default function Storefront() {
           {panel === "checkout" && (
             <form
               className="checkout-form"
+              data-endpoint=""
               onSubmit={(e) => {
                 e.preventDefault();
                 setOrder(`MORNLARK-${Date.now().toString(36).toUpperCase()}`);
@@ -1145,7 +1176,7 @@ export default function Storefront() {
                 />
               </label>
               <div className="checkout-total">
-                <span>Preview total · shipping included</span>
+                <span>Preview total, shipping included</span>
                 <strong>{money(subtotal)}</strong>
               </div>
               <button className="button button-dark full-width" type="submit">
@@ -1171,6 +1202,7 @@ export default function Storefront() {
                 was taken and nothing will be shipped.
               </p>
               <button
+                type="button"
                 className="button button-dark"
                 onClick={() => {
                   setPanel(null);
@@ -1220,6 +1252,7 @@ export default function Storefront() {
                 day better, and we’ll introduce you to a robot that fits.
               </p>
               <button
+                type="button"
                 className="button button-dark"
                 onClick={() => {
                   setMatch("");

@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MornLark — A smarter life. A robot away.",
+  title: "MornLark | Robots for home, work and companionship",
   description:
-    "Meet your next everyday companion. Explore thoughtfully selected robots for your home, your work, and everything in between.",
+    "Explore robots for your home, workspace and everyday routines. Browse the MornLark collection, compare specifications and find the right fit.",
   icons: { icon: "/icon.svg" },
 };
 

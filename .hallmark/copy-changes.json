@@ -1,0 +1,132 @@
+[
+  {
+    "before": "A little more future. A lot more possibility.",
+    "after": "Robots for home, work and companionship.",
+    "reason": "Specific product-category copy (19)."
+  },
+  {
+    "before": "THE FUTURE FEELS RIGHT AT HOME / A smarter life. A robot away.",
+    "after": "Robots for real life.",
+    "reason": "Remove the eyebrow and generic promise (19,54,67)."
+  },
+  {
+    "before": "Less of the everyday. More of what you love. Find a robot that makes life a little more human.",
+    "after": "Find thoughtful companions for your home, workspace and everyday routines.",
+    "reason": "One concise sentence (19,58)."
+  },
+  {
+    "before": "Thoughtfully selected. Ready for your world.",
+    "after": null,
+    "reason": "Remove decorative footnote (54,66)."
+  },
+  {
+    "before": "Meet Atlas One / A new kind of helping hand. / 01 / 04",
+    "after": "Meet Atlas One / $2,499",
+    "reason": "Product caption and existing price replace decorative text (19,66)."
+  },
+  {
+    "before": "YOUR EVERYDAY, UPGRADED / Good company. Great possibilities.",
+    "after": "The robot collection.",
+    "reason": "Promote the subject into its heading (54,67)."
+  },
+  {
+    "before": "Bestseller / New arrival / Community favorite / sample star ratings and review counts",
+    "after": null,
+    "reason": "Remove unverified customer proof; retain the discount derived from the existing sample prices (46a)."
+  },
+  {
+    "before": "A little intelligence. A whole lot of heart.",
+    "after": "An illustrative collection. Product details and checkout are provided as a preview.",
+    "reason": "Replace decorative caption with truthful catalog context (19,63)."
+  },
+  {
+    "before": "TECHNOLOGY WITH A HUMAN SIDE / More living. Less doing.",
+    "after": "From floor care to desk companions.",
+    "reason": "Merge the eyebrow into a specific heading, then resolve the finish review (19,54,67)."
+  },
+  {
+    "before": "We believe the best technology gives you something back. Your time. Your energy. A little room to be yourself. That’s why we bring together robots that make a real difference to your everyday.",
+    "after": "We bring together robots that make a practical difference to everyday life. Start with what you need, then find the robot that fits.",
+    "reason": "Tighten the statement (19,58)."
+  },
+  {
+    "before": "Built for peace of mind",
+    "after": "2-year warranty",
+    "reason": "Use the existing illustrative warranty fact as its heading (19)."
+  },
+  {
+    "before": "30 days to fall in love",
+    "after": "30-day returns",
+    "reason": "Plain label for the same return window (19)."
+  },
+  {
+    "before": "Good people. Here to help.",
+    "after": "Help from a person, when you need it.",
+    "reason": "Plain support description (19)."
+  },
+  {
+    "before": null,
+    "after": "Delivery and support. / Demo store. Policies are illustrative until orders open.",
+    "reason": "Name the retained policies and clarify their illustrative status (46a)."
+  },
+  {
+    "before": "A little more future. A little more you.",
+    "after": "Find a robot that fits your everyday.",
+    "reason": "Specific footer copy (19)."
+  },
+  {
+    "before": "© 2026 MornLark. Made for a more human everyday. / United States · USD $",
+    "after": "© 2026 MornLark / Prices in USD",
+    "reason": "Remove generic tagline and template punctuation (19,63)."
+  },
+  {
+    "before": "Free shipping · 30-day returns / Demo store · No payment is collected. / Preview total · shipping included",
+    "after": "Free shipping. 30-day returns. / Demo store. No payment is collected. / Preview total, shipping included",
+    "reason": "Punctuation only; terms preserved (63)."
+  },
+  {
+    "before": "A robot that gets you. / Your future looks friendly. / Good things are on their way. / Room to make yourself at home. / A little help from a human.",
+    "after": "Find your robot / Demo order complete / Shipping and delivery / Returns and warranty / Customer support",
+    "reason": "Plain dialog labels (19)."
+  },
+  {
+    "before": "A little empty. Full of possibility. / Your next everyday companion is waiting.",
+    "after": "Your bag is empty. / Explore the collection to find your robot.",
+    "reason": "Empty state identifies what is empty and how to act (19)."
+  },
+  {
+    "before": "No robots found. Yet. / Try another search or give your filters a little more room.",
+    "after": "No robots found. / Try a different search or adjust your filters.",
+    "reason": "Direct search empty state (19)."
+  },
+  {
+    "before": "A helping hand. And so much more.",
+    "after": "Humanoid assistance for the workplace.",
+    "reason": "Atlas card describes its existing use (19)."
+  },
+  {
+    "before": "Big adventures. Four little legs.",
+    "after": "A four-legged companion for exploration.",
+    "reason": "Scout card describes its existing use (19)."
+  },
+  {
+    "before": "Clean floors. Clear schedule.",
+    "after": "Vacuuming and mopping, handled together.",
+    "reason": "Cleanbot card describes its existing functions (19)."
+  },
+  {
+    "before": "A little friend with a lot of personality.",
+    "after": "A companion for your desk.",
+    "reason": "Miko card describes its existing use (19)."
+  },
+  {
+    "before": "MornLark — A smarter life. A robot away.",
+    "after": "MornLark | Robots for home, work and companionship",
+    "reason": "Specific metadata title (19)."
+  },
+  {
+    "before": "Meet your next everyday companion. Explore thoughtfully selected robots for your home, your work, and everything in between.",
+    "after": "Explore robots for your home, workspace and everyday routines. Browse the MornLark collection, compare specifications and find the right fit.",
+    "reason": "Specific metadata description (19)."
+  }
+]

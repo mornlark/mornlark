@@ -1,6 +1,6 @@
 # MornLark
 
-A robot shopping storefront built with Next.js 16, React 19, and TypeScript. The design uses warm neutrals, sage accents, and custom robot product photography.
+A robot shopping storefront built with Next.js 16, React 19, and TypeScript. The design uses an editorial catalog layout, Geist typography, restrained green accents, and local robot imagery.
 
 ## Run locally
 
@@ -34,6 +34,8 @@ The catalog is illustrative. Checkout does not process payments or create fulfil
 - `app/catalog.ts`: sample products, prices, descriptions, and features.
 - `app/storefront.tsx`: browsing and shopping interactions.
 - `app/globals.css`: responsive layout and styling.
+- `app/tokens.css`: shared color, typography, spacing, and control tokens.
+- `app/base.css`: foundational styles and accessibility defaults.
 - `app/layout.tsx`: page metadata and fonts.
 - `app/sitemap.ts`: canonical public page URLs, generated as `/sitemap.xml` at build time.
 - `app/robots.txt`: crawler rules and the sitemap reference.
@@ -41,6 +43,14 @@ The catalog is illustrative. Checkout does not process payments or create fulfil
 - `public/images/robot-collection.webp`: four product photographs arranged in equal quadrants and displayed as a CSS image sprite.
 
 The images are compressed WebP files, served locally without an external image service. Image generation prompts and provenance are in [docs/image-prompts.md](docs/image-prompts.md).
+
+## Design approach
+
+The redesign follows [Hallmark](https://github.com/Nutlope/hallmark) v2 while retaining MornLark's name, green accent, imagery, and shopping interactions. Product names, prices, and specifications lead the catalog. Sample customer ratings and unverified popularity badges are omitted, and illustrative products and policies are identified as previews.
+
+Design decisions and copy changes are recorded in `.hallmark/`. Local before-and-after captures are available in `.hallmark/compare.html` after running Hallmark's browser checks; generated screenshots and inventories are ignored by Git.
+
+Cart and favorites are restored from browser storage after hydration. That existing behavior has a narrowly documented lint exception so the server and initial browser render stay consistent.
 
 ## Sitemap maintenance
 

@@ -25,7 +25,7 @@ export const products: Product[] = [
   {
     id: "atlas",
     name: "Atlas One",
-    tagline: "A helping hand. And so much more.",
+    tagline: "Humanoid assistance for the workplace.",
     price: 2499,
     category: "Work & industry",
     badge: "Bestseller",
@@ -44,7 +44,7 @@ export const products: Product[] = [
   {
     id: "scout",
     name: "Scout",
-    tagline: "Big adventures. Four little legs.",
+    tagline: "A four-legged companion for exploration.",
     price: 1299,
     category: "Companions",
     badge: "New arrival",
@@ -63,7 +63,7 @@ export const products: Product[] = [
   {
     id: "cleanbot",
     name: "Cleanbot Pro",
-    tagline: "Clean floors. Clear schedule.",
+    tagline: "Vacuuming and mopping, handled together.",
     price: 649,
     originalPrice: 799,
     category: "Home & living",
@@ -83,7 +83,7 @@ export const products: Product[] = [
   {
     id: "miko",
     name: "Miko Mini",
-    tagline: "A little friend with a lot of personality.",
+    tagline: "A companion for your desk.",
     price: 349,
     category: "Companions",
     badge: "Community favorite",

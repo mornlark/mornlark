@@ -1,0 +1,29 @@
+{
+  "scanned": "2026-11-12",
+  "findings": {
+    "fonts": "Geist and Geist Mono via next/font (app/layout.tsx:2)",
+    "palette": "MornLark green #365b43 and pale neutral surfaces (original app/globals.css:3)",
+    "motion": "CSS only; reduced-motion support",
+    "framework": "Next.js 16.4.6 App Router (package.json:12)",
+    "publicPages": [
+      "/"
+    ],
+    "material": "Existing illustrative catalog and generated local robot imagery, documented in README.md and docs/image-prompts.md"
+  },
+  "preserve": [
+    "MornLark",
+    "https://mornlark.com",
+    "brand green",
+    "Geist",
+    "all shopping handlers, fields, routes and analytics"
+  ],
+  "introduce": [
+    "Catalogue composition",
+    "role-based tokens",
+    "larger controls",
+    "captioned product photography",
+    "plain product copy"
+  ],
+  "direction": "Consumer robot catalog, product browsing primary, restrained editorial tone",
+  "source": "https://github.com/Nutlope/hallmark"
+}

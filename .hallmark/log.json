@@ -1,0 +1,53 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Catalogue",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/cool",
+  "hero": "Banner",
+  "nav": "masthead",
+  "footer": "mast",
+  "imagery": "existing illustrative product renders",
+  "photos": [],
+  "entry": "Captioned Atlas One product photograph with existing price",
+  "fingerprint": "Hanging|Two-column asymmetric|Hairline and paper change|Solid|Margin-aligned|None",
+  "sections": [
+   "Hero product plate",
+   "Robot catalog",
+   "Floor care and desk companion statement",
+   "Illustrative delivery and support rows",
+   "Footer mast"
+  ],
+  "signature": "Atlas One presented as a captioned product plate",
+  "waived": [
+   "3: real product cards with save controls, not feature tiles",
+   "39b: product photographs are large detail-view buttons"
+  ],
+  "prompt": "Make the MornLark consumer robot storefront more professional using Nutlope/Hallmark. Preserve brand and shopping interactions.",
+  "draw": "b16830",
+  "drawSwaps": "Catalogue and Banner replace Bento Grid and Poster: the supplied material is an existing four-product shop, with no manufacturing process or additional real photography to invent. Masthead and mast retained from draw.",
+  "heroReview": {
+   "reviewer": "subagent",
+   "findings": 2,
+   "resolved": 2
+  },
+  "finishReview": {
+   "reviewer": "subagent",
+   "findings": 1,
+   "resolved": 1,
+   "gap": "none"
+  },
+  "checks": {
+   "floorFails": 0,
+   "openReflex": 0,
+   "waived": 2,
+   "allOriginalLinksPreserved": true,
+   "all46HandlersPreserved": true,
+   "fieldNote": "spark was a decorative Icon name indexed as a field; no actual input was removed"
+  },
+  "materialNeeded": "Verified product photographs and specifications to replace the existing illustrative catalog.",
+  "date": "2026-11-12"
+ }
+]

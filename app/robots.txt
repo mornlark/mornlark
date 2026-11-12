@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow:
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 Sitemap: https://mornlark.com/sitemap.xml

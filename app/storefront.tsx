@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { registerStorefrontTools } from "@/lib/agents/webmcp";
 import {
   categories,
   money,
@@ -342,16 +343,16 @@ export default function Storefront() {
       current.includes(id) ? current.filter((f) => f !== id) : [...current, id],
     );
   }
-  function openProduct(product: Product) {
+  const openProduct = useCallback((product: Product) => {
     setPanel(null);
     setSelected(product);
     setQuantity(1);
-  }
+  }, []);
   function openPanel(next: Panel) {
     setSelected(null);
     setPanel(next);
   }
-  function showCatalog(reset = false) {
+  const showCatalog = useCallback((reset = false) => {
     if (reset) {
       setCategory("All robots");
       setQuery("");
@@ -359,7 +360,25 @@ export default function Storefront() {
     }
     setMenuOpen(false);
     document.getElementById("robots")?.scrollIntoView({ behavior: "smooth" });
-  }
+  }, []);
+
+  useEffect(
+    () => registerStorefrontTools({
+      search: (filters) => {
+        setQuery(filters.query ?? "");
+        setCategory(filters.category ?? "All robots");
+        setPriceLimit(Math.min(filters.maxPrice ?? 3000, 3000));
+        setSort(filters.sort ?? "featured");
+        setSearchOpen(Boolean(filters.query));
+        showCatalog();
+      },
+      view: (id) => {
+        const product = products.find((product) => product.id === id);
+        if (product) openProduct(product);
+      },
+    }),
+    [openProduct, showCatalog],
+  );
   function resetFilters() {
     setCategory("All robots");
     setQuery("");

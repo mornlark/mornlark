@@ -1,4 +1,4 @@
-# robo
+# MornLark
 
 A robot shopping storefront built with Next.js 16, React 19, and TypeScript. The design uses warm neutrals, sage accents, and custom robot product photography.
 

@@ -144,17 +144,10 @@ p {
   align-items: center;
   gap: 8px;
   font-weight: 700;
-  font-size: 34px;
+  font-size: 30px;
   letter-spacing: -2px;
   line-height: 1;
   color: #294332;
-}
-.brand-dot {
-  font-size: 10px;
-  letter-spacing: 0;
-  align-self: flex-start;
-  margin-top: 3px;
-  margin-left: -4px;
 }
 .main-nav {
   display: flex;
@@ -874,7 +867,7 @@ p {
 .story-symbol .brand {
   position: relative;
   z-index: 1;
-  transform: scale(2.2);
+  transform: scale(2);
   color: #506c46;
 }
 .story-symbol .brand svg {
@@ -1575,7 +1568,7 @@ p {
     height: 78px;
   }
   .brand {
-    font-size: 30px;
+    font-size: 24px;
     gap: 6px;
   }
   .brand > svg {

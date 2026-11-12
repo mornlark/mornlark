@@ -133,7 +133,7 @@ function Logo() {
           strokeLinecap="round"
         />
       </svg>
-      robo<span className="brand-dot">®</span>
+      MornLark
     </span>
   );
 }
@@ -370,7 +370,7 @@ export default function Storefront() {
         </button>
       </div>
       <header className="site-header container">
-        <a href="#" aria-label="robo home">
+        <a href="#" aria-label="MornLark home">
           <Logo />
         </a>
         <nav
@@ -381,7 +381,7 @@ export default function Storefront() {
             Shop robots <Icon name="chevron" size={14} />
           </button>
           <a href="#why-robo" onClick={() => setMenuOpen(false)}>
-            Why robo?
+            Why MornLark?
           </a>
           <a href="#our-story" onClick={() => setMenuOpen(false)}>
             Our story
@@ -534,7 +534,7 @@ export default function Storefront() {
         <section
           className="benefits container"
           id="why-robo"
-          aria-label="The robo promise"
+          aria-label="The MornLark promise"
         >
           {[
             {
@@ -781,7 +781,7 @@ export default function Storefront() {
 
       <footer className="site-footer container">
         <div>
-          <a href="#" aria-label="robo home">
+          <a href="#" aria-label="MornLark home">
             <Logo />
           </a>
           <p>A little more future. A little more you.</p>
@@ -796,7 +796,7 @@ export default function Storefront() {
           <button onClick={() => openPanel("support")}>Need a hand?</button>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 robo. Made for a more human everyday.</span>
+          <span>© 2026 MornLark. Made for a more human everyday.</span>
           <span>United States · USD $</span>
         </div>
       </footer>
@@ -1103,7 +1103,7 @@ export default function Storefront() {
               className="checkout-form"
               onSubmit={(e) => {
                 e.preventDefault();
-                setOrder(`ROBO-${Date.now().toString(36).toUpperCase()}`);
+                setOrder(`MORNLARK-${Date.now().toString(36).toUpperCase()}`);
                 setCart({});
                 setPanel("complete");
               }}

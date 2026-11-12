@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "robo — A smarter life. A robot away.",
+  title: "MornLark — A smarter life. A robot away.",
   description:
     "Meet your next everyday companion. Explore thoughtfully selected robots for your home, your work, and everything in between.",
   icons: { icon: "/icon.svg" },
